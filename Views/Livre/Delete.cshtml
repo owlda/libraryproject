@@ -1,0 +1,43 @@
+﻿@model LibraryProject.Models.Livre
+    <div class="jumbotron">
+
+        <div>
+            @using (Html.BeginForm("Delete", "Livre"))
+            {<div class="form-group">
+                    <div>
+                        @Html.HiddenFor(c => c.Id)
+                    </div>
+                    <div>
+                        @Html.HiddenFor(c => c.Name)
+                    </div>
+                    <div>
+                        @Html.HiddenFor(c => c.NumberAvalible)
+                    </div>
+                    <div>
+                        @Html.HiddenFor(c => c.Description)
+                    </div>
+                    <div>
+                        @Html.HiddenFor(c => c.Category)
+                    </div>
+                    <div>
+                        @Html.HiddenFor(c => c.Author)
+                    </div>
+                    <div>
+                        <p>
+                            Suprimer ce livre?
+                        </p>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Oui</button>
+                </div>
+             }
+        </div>
+        <div>
+            @Html.ActionLink("Retour", "Show")
+        </div>
+        <hr />
+        <div>
+            <p>&copy; @DateTime.Now.Year - Bibliothèque publique de centre communautaire (GPLCC)</p>
+        </div>
+    </div>
+       

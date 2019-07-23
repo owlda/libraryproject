@@ -1,0 +1,90 @@
+﻿@model IEnumerable<LibraryProject.Models.Pret>
+
+    <div class="jumbotron">
+
+        <h4>Total prets: @ViewBag.Total</h4>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IDUser)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberAvalible)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateTimeReservation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateTimeRetour)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IDUser)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberAvalible)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateTimeReservation)
+                    </td>
+                    <td>
+                        @if (item.DateTimeRetour < DateTime.Now)
+                        {
+
+                            @Html.DisplayFor(modelItem => item.DateTimeRetour)
+                            TimeSpan ts = (DateTime.Now - item.DateTimeRetour);
+                            <p style="font-size:12px; color:red">Livre expiré pendant @ts.Days.ToString() jour(s)!</p>
+                         }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.DateTimeRetour)
+                        }
+
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Retourner", "Retour", new { id = item.ID })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <hr />
+        <div>
+            <p>&copy; @DateTime.Now.Year - Bibliothèque publique de centre communautaire (GPLCC)</p>
+        </div>
+
+
+    </div>

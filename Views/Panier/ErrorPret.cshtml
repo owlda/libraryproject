@@ -1,0 +1,18 @@
+﻿@model LibraryProject.Models.Reservation
+
+    <div class="jumbotron">
+        <h2>Le nombre de livres maximal est de @ViewBag.Total</h2>
+        <div>
+            <hr />
+            <p>
+                L'utilisateur ne peut pas preter encore! La limite est moins ou égale 3.
+            </p>
+        </div>
+        <div>
+            @Html.ActionLink("Retour page précédente", "show")
+        </div>
+        <div>
+            <hr />
+            <p>&copy; @DateTime.Now.Year - Bibliothèque publique de centre communautaire (GPLCC)</p>
+        </div>
+    </div>
